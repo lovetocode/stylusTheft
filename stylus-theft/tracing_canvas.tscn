@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bk6def6op1q2i" path="res://Scripts/draw_layer.gd" id="1_n8lyf"]
 [ext_resource type="Script" uid="uid://cs1yfkhjvsacj" path="res://Scripts/tracing_canvas.gd" id="1_xrmd8"]
+[ext_resource type="Script" uid="uid://gomu63manvae" path="res://Scripts/gallery_loader.gd" id="3_bm03r"]
 
 [node name="TracingCanvas" type="Node2D" unique_id=756514409]
 script = ExtResource("1_xrmd8")
@@ -18,3 +19,12 @@ offset_bottom = 1079.0
 
 [node name="DrawLayer" type="Node2D" parent="." unique_id=1747227409]
 script = ExtResource("1_n8lyf")
+
+[node name="Timer" type="Timer" parent="." unique_id=381395552]
+wait_time = 5.0
+autostart = true
+
+[node name="GalleryLoader" type="Node2D" parent="." unique_id=1941855610]
+script = ExtResource("3_bm03r")
+
+[connection signal="timeout" from="Timer" to="GalleryLoader" method="_on_timer_timeout"]
