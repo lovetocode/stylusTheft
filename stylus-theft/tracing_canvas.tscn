@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bk6def6op1q2i" path="res://Scripts/draw_layer.gd" id="1_n8lyf"]
 [ext_resource type="Script" uid="uid://cs1yfkhjvsacj" path="res://Scripts/tracing_canvas.gd" id="1_xrmd8"]
 [ext_resource type="Script" uid="uid://gomu63manvae" path="res://Scripts/gallery_loader.gd" id="3_bm03r"]
+[ext_resource type="Texture2D" uid="uid://bloruhijw0jgf" path="res://arrow_decorative_w_small.png" id="4_2hk4t"]
 
 [node name="TracingCanvas" type="Node2D" unique_id=756514409]
 script = ExtResource("1_xrmd8")
@@ -10,21 +11,37 @@ script = ExtResource("1_xrmd8")
 [node name="background" type="ColorRect" parent="." unique_id=1788451266]
 offset_left = -62.0
 offset_top = -46.0
-offset_right = 1303.0
-offset_bottom = 770.0
+offset_right = 2055.0
+offset_bottom = 1092.0
+color = Color(0.059895813, 0.009826656, 0.009826656, 1)
 
 [node name="reference" type="TextureRect" parent="." unique_id=2049516489]
-offset_right = 1922.0
-offset_bottom = 1079.0
+offset_left = -3.0
+offset_top = 9.0
+offset_right = 1919.0
+offset_bottom = 1086.0
 
 [node name="DrawLayer" type="Node2D" parent="." unique_id=1747227409]
 script = ExtResource("1_n8lyf")
 
-[node name="Timer" type="Timer" parent="." unique_id=381395552]
-wait_time = 5.0
-autostart = true
+[node name="ImageTimer" type="Timer" parent="." unique_id=381395552]
+process_callback = 0
 
 [node name="GalleryLoader" type="Node2D" parent="." unique_id=1941855610]
 script = ExtResource("3_bm03r")
 
-[connection signal="timeout" from="Timer" to="GalleryLoader" method="_on_timer_timeout"]
+[node name="ToolBar" type="HBoxContainer" parent="." unique_id=533335717]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 40
+
+[node name="Undo" type="TextureButton" parent="ToolBar" unique_id=222437145]
+layout_mode = 2
+texture_normal = ExtResource("4_2hk4t")
+
+[node name="Label" type="Label" parent="ToolBar" unique_id=73304235]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "00:00"
+
+[connection signal="timeout" from="ImageTimer" to="GalleryLoader" method="_on_timer_timeout"]

@@ -1,11 +1,16 @@
 extends Node2D
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if OS.get_name() == "Android":
 		OS.request_permissions()
 	scan_gallery()
 	load_next_gallery_image()
+
+	
+	
 		
 var gallery_images: Array[String] = []
 var current_index: int = 0

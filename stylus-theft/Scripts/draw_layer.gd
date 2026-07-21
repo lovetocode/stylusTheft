@@ -3,16 +3,19 @@ extends Node2D
 # Each stroke is an array of Vector2 points.
 var strokes: Array = []
 var current_stroke: PackedVector2Array = PackedVector2Array()
+var bar_height: float = 0.0
 
 var brush_color: Color = Color.BLACK
 var brush_width: float = 3.0
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
+		if event.position.y < bar_height:
+			return
 		if event.pressed:
 			# New stroke starts here.
 			current_stroke = PackedVector2Array()
-			current_stroke.append(event.position)
+			current_stroke.append(to_local(event.position))
 		else:
 			# Finger/stylus lifted - finalize this stroke.
 			if current_stroke.size() > 0:
@@ -21,8 +24,10 @@ func _input(event: InputEvent) -> void:
 		queue_redraw()
 
 	elif event is InputEventScreenDrag:
+		if event.position.y < bar_height:
+			return
 		# Stylus is moving while touching the screen.
-		current_stroke.append(event.position)
+		current_stroke.append(to_local(event.position))
 		queue_redraw()
 
 func _draw() -> void:
