@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://xlshyr14ngw5"]
+
+[node name="Settings" type="Node2D" unique_id=485688192]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1423848693]
+offset_right = 2285.0
+offset_bottom = 1096.0
+color = Color(0.65625, 0.124755874, 0.6479454, 1)
+
+[node name="Settings" type="Label" parent="." unique_id=344986912]
+offset_right = 460.0
+offset_bottom = 137.0
+theme_override_font_sizes/font_size = 100
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1997772751]
+offset_top = 100.0
+offset_right = 529.0
+offset_bottom = 342.0
+theme_override_constants/separation = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1754968637]
+layout_mode = 2
+
+[node name="SessionTime" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=772431123]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Session Time"
+
+[node name="SessionTimeInput" type="SpinBox" parent="VBoxContainer/HBoxContainer" unique_id=464258507]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=234356819]
+layout_mode = 2
+
+[node name="PerImageTime" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=171742956]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Image Time"
+
+[node name="SessionTimeInput" type="SpinBox" parent="VBoxContainer/HBoxContainer2" unique_id=1129582832]
+layout_mode = 2

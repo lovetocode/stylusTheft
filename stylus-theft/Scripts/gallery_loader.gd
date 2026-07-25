@@ -1,6 +1,6 @@
 extends Node2D
 
-
+@onready var canvas = $"../DrawLayer"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,9 +9,6 @@ func _ready() -> void:
 	scan_gallery()
 	load_next_gallery_image()
 
-	
-	
-		
 var gallery_images: Array[String] = []
 var current_index: int = 0
 
@@ -61,4 +58,9 @@ func load_next_gallery_image():
 	$"../reference".texture = texture
 	
 func _on_timer_timeout() -> void:
+	clear_drawing()
 	load_next_gallery_image()
+	
+func clear_drawing():
+	canvas.strokes.clear()
+	canvas.queue_redraw()
