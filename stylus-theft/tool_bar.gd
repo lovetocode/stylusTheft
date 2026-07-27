@@ -2,6 +2,7 @@ extends HBoxContainer
 
 signal undo_requested
 signal save_requested
+signal next_requested
 signal brush_size_changed(new_size: float)
 signal brush_color_changed(new_color: Color)
 
@@ -19,6 +20,7 @@ func _ready() -> void:
 	$ColorSwatch/ColorPickerPopup/ColorPicker.color_changed.connect(_on_color_picker_changed)
 	$ColorSwatch/ColorPickerPopup.visible = false
 	$ColorSwatch.pressed.connect(_on_color_swatch_pressed)
+	$Next.pressed.connect(_on_next_pressed)
 	
 func _on_undo_pressed():
 	undo_requested.emit()
@@ -48,4 +50,7 @@ func _on_color_picker_changed(new_color: Color):
 	
 func _on_color_swatch_pressed() -> void:
 	$ColorSwatch/ColorPickerPopup.visible = !$ColorSwatch/ColorPickerPopup.visible
+	
+func _on_next_pressed():
+	next_requested.emit()
 	

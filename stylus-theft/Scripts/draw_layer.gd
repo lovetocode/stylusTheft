@@ -4,12 +4,14 @@ extends Node2D
 @onready var texture_rect = $"../reference"
 
 
+
 func _ready() -> void:
 	tool_bar.undo_requested.connect(_on_undo_requested)
 	tool_bar.save_requested.connect(_on_save_requested)
 	bar_height = tool_bar.size.y
 	tool_bar.brush_size_changed.connect(_on_brush_size_changed)
 	tool_bar.brush_color_changed.connect(_on_brush_color_changed)
+	
 	
 # Each stroke is an array of Vector2 points.
 var strokes: Array = []

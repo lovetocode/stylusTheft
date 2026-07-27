@@ -1,9 +1,12 @@
 extends Node2D
 
 @onready var canvas = $"../DrawLayer"
+@onready var tool_bar = $"../ToolBar"
+@onready var timer = $"../ImageTimer"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	tool_bar.next_requested.connect(_on_next_requested)
 	if OS.get_name() == "Android":
 		OS.request_permissions()
 	scan_gallery()
@@ -64,3 +67,9 @@ func _on_timer_timeout() -> void:
 func clear_drawing():
 	canvas.strokes.clear()
 	canvas.queue_redraw()
+	
+func _on_next_requested():
+	timer.stop()
+	clear_drawing()
+	timer.start()
+	load_next_gallery_image()

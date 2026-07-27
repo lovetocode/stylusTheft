@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var label = $ToolBar/Label
+@onready var label = $ToolBar/TimeLabel
 @onready var timer = $ImageTimer
 @onready var top_bar = $ToolBar
 @onready var reference = $reference
