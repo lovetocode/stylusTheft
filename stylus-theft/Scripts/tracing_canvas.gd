@@ -7,13 +7,21 @@ extends Node2D
 @onready var draw_layer = $DrawLayer
 
 
+var sesson_elapsed: float = 0.0
+var session_active: bool = true
+var image_time: float
+var session_time: float
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_viewport().size_changed.connect(_on_viewport_resized)
 	_on_viewport_resized()
-	timer.wait_time = 100	
-	timer.start()
+	timer.wait_time = SessionConfig.image_time
+	session_time = SessionConfig.session_time
 	setup_top_bar()
+	timer.start()
+	
 	
 func _on_viewport_resized():
 	var vp_size = get_viewport().get_visible_rect().size
@@ -27,6 +35,13 @@ func imageduration():
 	
 func _process(delta: float) -> void:
 	label.text = "%02d:%02d" % imageduration()
+	
+	if session_active == false:
+		return
+	sesson_elapsed += delta
+	if sesson_elapsed >= session_time:
+		session_active = false
+		timer.stop()
 	
 func setup_top_bar():
 	
@@ -42,5 +57,6 @@ func setup_top_bar():
 	
 	draw_layer.position.y = bar_height
 	draw_layer.bar_height = bar_height
+	
 	
 	

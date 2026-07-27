@@ -1,0 +1,17 @@
+extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	get_viewport().size_changed.connect(_on_size_changed)
+	_on_size_changed()
+	$Back.pressed.connect(_on_back_pressed)
+
+func _on_size_changed():
+	var vp_size = get_viewport_rect().size
+	$background.size = vp_size
+	$background.position = Vector2.ZERO
+	
+	
+func _on_back_pressed():
+	get_tree().change_scene_to_file("res://main.tscn")

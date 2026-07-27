@@ -1,21 +1,30 @@
 [gd_scene format=3 uid="uid://j1c5fqrnfofd"]
 
-[node name="Main" type="Node2D" unique_id=21034503]
+[ext_resource type="Script" uid="uid://88g5da7tgxug" path="res://Scripts/main.gd" id="1_ig7tw"]
 
-[node name="name" type="Label" parent="." unique_id=1769973156]
-offset_left = 16.0
-offset_top = 76.0
-offset_right = 1936.0
-offset_bottom = 576.0
+[node name="Main" type="Node2D" unique_id=21034503]
+script = ExtResource("1_ig7tw")
+
+[node name="background" type="ColorRect" parent="." unique_id=1537605044]
+offset_right = 1738.0
+offset_bottom = 1033.0
+color = Color(0.7083334, 0.103298604, 0.62325037, 1)
+
+[node name="AppName" type="Label" parent="." unique_id=1769973156]
+offset_left = -78.0
+offset_top = 54.0
+offset_right = 1842.0
+offset_bottom = 554.0
 theme_override_font_sizes/font_size = 200
 text = "Stylus Theft"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=653639636]
-offset_top = 500.0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_left = -74.0
+offset_top = 357.0
+offset_right = 1846.0
+offset_bottom = 937.0
 offset_transform_enabled = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer" unique_id=858885004]
@@ -26,24 +35,24 @@ theme_override_constants/separation = 20
 [node name="settings" type="Button" parent="CenterContainer/HBoxContainer" unique_id=672868208]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 36
 text = "Settings"
 
 [node name="setUp" type="Button" parent="CenterContainer/HBoxContainer" unique_id=281287484]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 36
 text = "SetUp
 "
 
-[node name="setUp2" type="Button" parent="CenterContainer/HBoxContainer" unique_id=141608209]
+[node name="Start" type="Button" parent="CenterContainer/HBoxContainer" unique_id=141608209]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 36
 text = "Start"
 
-[node name="setUp3" type="Button" parent="CenterContainer/HBoxContainer" unique_id=295379659]
+[node name="stats" type="Button" parent="CenterContainer/HBoxContainer" unique_id=295379659]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 36
 text = "Stats"
