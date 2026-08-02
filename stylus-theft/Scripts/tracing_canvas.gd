@@ -5,11 +5,12 @@ extends Node2D
 @onready var top_bar = $ToolBar
 @onready var reference = $reference
 @onready var draw_layer = $DrawLayer
+@onready var pixabay_loader: Node2D = $PixabayLoader
+@onready var gallery_loader = $GalleryLoader
 
 
 var sesson_elapsed: float = 0.0
 var session_active: bool = true
-var image_time: float
 var session_time: float
 
 
@@ -21,6 +22,17 @@ func _ready() -> void:
 	session_time = SessionConfig.session_time
 	setup_top_bar()
 	timer.start()
+	pixabay_loader.image_ready.connect(_on_pixabay_image_ready)
+	top_bar.next_requested.connect(_on_next_requested)
+	if OS.get_name() == "Android":
+		OS.request_permissions()
+	#gallery_loader.scan_gallery()
+	#gallery_loader.load_next_gallery_image()
+	pixabay_loader.search_and_load(SessionConfig.pixabay_query)
+	
+	
+func _on_pixabay_image_ready(texture: ImageTexture) -> void:
+	reference.texture = texture
 	
 	
 func _on_viewport_resized():
@@ -57,6 +69,23 @@ func setup_top_bar():
 	
 	draw_layer.position.y = bar_height
 	draw_layer.bar_height = bar_height
+	
+func _on_next_requested():
+	timer.stop()
+	clear_drawing()
+	timer.start()
+	gallery_loader.load_next_gallery_image()
+	
+func clear_drawing():
+	draw_layer.strokes.clear()
+	draw_layer.queue_redraw()
+	
+func _on_timer_timeout() -> void:
+	clear_drawing()
+	gallery_loader.load_next_gallery_image()
+	pixabay_loader.search_and_load(SessionConfig.pixabay_query)
+	
+
 	
 	
 	

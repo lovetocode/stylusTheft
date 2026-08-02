@@ -1,17 +1,5 @@
 extends Node2D
 
-@onready var canvas = $"../DrawLayer"
-@onready var tool_bar = $"../ToolBar"
-@onready var timer = $"../ImageTimer"
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	tool_bar.next_requested.connect(_on_next_requested)
-	if OS.get_name() == "Android":
-		OS.request_permissions()
-	scan_gallery()
-	load_next_gallery_image()
-
 var gallery_images: Array[String] = []
 var current_index: int = 0
 
@@ -24,6 +12,9 @@ func scan_gallery():
 	gallery_images.clear()
 	for folder_path in GALLERY_PATHS:
 		var dir = DirAccess.open(folder_path)
+		if dir == null:
+			push_warning("Could not open folder: " + folder_path)
+			continue
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		
@@ -60,16 +51,6 @@ func load_next_gallery_image():
 	
 	$"../reference".texture = texture
 	
-func _on_timer_timeout() -> void:
-	clear_drawing()
-	load_next_gallery_image()
+
+
 	
-func clear_drawing():
-	canvas.strokes.clear()
-	canvas.queue_redraw()
-	
-func _on_next_requested():
-	timer.stop()
-	clear_drawing()
-	timer.start()
-	load_next_gallery_image()

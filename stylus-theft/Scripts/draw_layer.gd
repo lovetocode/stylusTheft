@@ -4,7 +4,6 @@ extends Node2D
 @onready var texture_rect = $"../reference"
 
 
-
 func _ready() -> void:
 	tool_bar.undo_requested.connect(_on_undo_requested)
 	tool_bar.save_requested.connect(_on_save_requested)

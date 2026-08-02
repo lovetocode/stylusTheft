@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bk6def6op1q2i" path="res://Scripts/draw_layer.gd" id="1_n8lyf"]
 [ext_resource type="Script" uid="uid://cs1yfkhjvsacj" path="res://Scripts/tracing_canvas.gd" id="1_xrmd8"]
 [ext_resource type="Script" uid="uid://gomu63manvae" path="res://Scripts/gallery_loader.gd" id="3_bm03r"]
+[ext_resource type="Script" uid="uid://betgxfh4p2ddw" path="res://Scripts/pixabay_loader.gd" id="4_blbbb"]
 [ext_resource type="Script" uid="uid://dh45htkwoq3ff" path="res://tool_bar.gd" id="4_v0vuq"]
 [ext_resource type="AudioStream" uid="uid://mo8awado628i" path="res://tap-b.ogg" id="9_56r6y"]
 
@@ -32,6 +33,13 @@ process_callback = 0
 
 [node name="GalleryLoader" type="Node2D" parent="." unique_id=1941855610]
 script = ExtResource("3_bm03r")
+
+[node name="PixabayLoader" type="Node2D" parent="." unique_id=1352356018]
+script = ExtResource("4_blbbb")
+
+[node name="SearchRequest" type="HTTPRequest" parent="PixabayLoader" unique_id=1292686985]
+
+[node name="ImageRequest" type="HTTPRequest" parent="PixabayLoader" unique_id=2018090661]
 
 [node name="ToolBar" type="HBoxContainer" parent="." unique_id=533335717]
 offset_right = 40.0
@@ -95,5 +103,3 @@ offset_bottom = 611.0
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Next"
-
-[connection signal="timeout" from="ImageTimer" to="GalleryLoader" method="_on_timer_timeout"]
