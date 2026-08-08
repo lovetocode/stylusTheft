@@ -3,6 +3,8 @@ extends Node
 var image_time: float = 120.0
 var session_time:float = 600
 var pixabay_query: String = "art"
+var use_gallery: bool = true
+var use_pixabay: bool = false
 
 const SAVE_PATH = "user://session_config.json"
 
@@ -14,7 +16,9 @@ func save_config():
 	var data = {
 		"image_time": image_time,
 		"session_time": session_time,
-		 "pixabay_query": pixabay_query
+		 "pixabay_query": pixabay_query,
+		"use_gallery": use_gallery,
+		"use_pixabay": use_pixabay
 	}
 	
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -27,12 +31,10 @@ func load_config():
 	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 	var data = JSON.parse_string(file.get_as_text())
 	file.close()
-		
+	
 	if data:
-		image_time = data.get("image_time", image_time)
 		session_time = data.get("session_time", session_time)
+		image_time = data.get("image_time", image_time)
+		use_gallery = data.get("use_gallery", use_gallery)
+		use_pixabay = data.get("use_pixabay", use_pixabay)
 		pixabay_query = data.get("pixabay_query", pixabay_query)
-		
-	
-	
-	

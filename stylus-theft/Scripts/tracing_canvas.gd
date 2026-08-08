@@ -7,7 +7,8 @@ extends Node2D
 @onready var draw_layer = $DrawLayer
 @onready var pixabay_loader: Node2D = $PixabayLoader
 @onready var gallery_loader = $GalleryLoader
-
+@onready var session_time_label = $ToolBar/session_time_label
+@onready var res_loader = $ResLoader
 
 var sesson_elapsed: float = 0.0
 var session_active: bool = true
@@ -26,10 +27,9 @@ func _ready() -> void:
 	top_bar.next_requested.connect(_on_next_requested)
 	if OS.get_name() == "Android":
 		OS.request_permissions()
-	#gallery_loader.scan_gallery()
-	#gallery_loader.load_next_gallery_image()
-	pixabay_loader.search_and_load(SessionConfig.pixabay_query)
-	
+	gallery_loader.scan_gallery()
+	image_source_choice()
+	timer.timeout.connect(_on_timer_timeout)
 	
 func _on_pixabay_image_ready(texture: ImageTexture) -> void:
 	reference.texture = texture
@@ -51,6 +51,11 @@ func _process(delta: float) -> void:
 	if session_active == false:
 		return
 	sesson_elapsed += delta
+	var remaining: float = max(session_time - sesson_elapsed, 0.0)
+	var minutes: int = int(remaining) / 60
+	var seconds: int = int(remaining) % 60
+	session_time_label.text = "%d:%02d" % [minutes, seconds]
+	
 	if sesson_elapsed >= session_time:
 		session_active = false
 		timer.stop()
@@ -74,7 +79,7 @@ func _on_next_requested():
 	timer.stop()
 	clear_drawing()
 	timer.start()
-	gallery_loader.load_next_gallery_image()
+	image_source_choice()
 	
 func clear_drawing():
 	draw_layer.strokes.clear()
@@ -82,9 +87,24 @@ func clear_drawing():
 	
 func _on_timer_timeout() -> void:
 	clear_drawing()
-	gallery_loader.load_next_gallery_image()
-	pixabay_loader.search_and_load(SessionConfig.pixabay_query)
+	image_source_choice()
 	
+func image_source_choice():
+	if OS.has_feature("web"):
+		res_loader.load_random_image()
+	if SessionConfig.use_gallery and SessionConfig.use_pixabay:
+		if randi() % 2 == 0:
+			gallery_loader.load_next_gallery_image()
+		else:
+			pixabay_loader.search_and_load(SessionConfig.pixabay_query)
+	elif SessionConfig.use_pixabay:
+		pixabay_loader.search_and_load(SessionConfig.pixabay_query)
+	else:
+		res_loader.load_random_image()
+	
+		
+		
+		
 
 	
 	
