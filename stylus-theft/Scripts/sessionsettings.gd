@@ -14,8 +14,8 @@ func _ready() -> void:
 	$VBoxContainer/HBoxContainer5/Back.pressed.connect(_on_back_pressed)
 	$VBoxContainer/HBoxContainer5/Save.pressed.connect(_on_save_pressed)
 	pixabay_search_field.text = SessionConfig.pixabay_query
-	session_time.value = SessionConfig.session_time
-	image_time.value = SessionConfig.image_time
+	session_time.value = SessionConfig.session_time / 60
+	image_time.value = SessionConfig.image_time / 60
 	use_gallery_checkbox.button_pressed = SessionConfig.use_gallery
 	use_pixabay_checkbox.button_pressed = SessionConfig.use_pixabay
 	

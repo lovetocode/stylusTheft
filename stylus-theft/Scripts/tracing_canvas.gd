@@ -46,7 +46,7 @@ func imageduration():
 	return [minutes, seconds]
 	
 func _process(delta: float) -> void:
-	label.text = "%02d:%02d" % imageduration()
+	label.text = "i: %2d:%02d" % imageduration()
 	
 	if session_active == false:
 		return
@@ -54,7 +54,7 @@ func _process(delta: float) -> void:
 	var remaining: float = max(session_time - sesson_elapsed, 0.0)
 	var minutes: int = int(remaining) / 60
 	var seconds: int = int(remaining) % 60
-	session_time_label.text = "%d:%02d" % [minutes, seconds]
+	session_time_label.text = "S: %d:%02d" % [minutes, seconds]
 	
 	if sesson_elapsed >= session_time:
 		session_active = false
@@ -99,6 +99,8 @@ func image_source_choice():
 			pixabay_loader.search_and_load(SessionConfig.pixabay_query)
 	elif SessionConfig.use_pixabay:
 		pixabay_loader.search_and_load(SessionConfig.pixabay_query)
+	elif SessionConfig.use_gallery:
+		gallery_loader.load_next_gallery_image()
 	else:
 		res_loader.load_random_image()
 	
