@@ -15,7 +15,7 @@ func _ready() -> void:
 	
 func search_and_load(query: String) -> void:
 	var encoded_query: String = query.uri_encode()
-	var url: String = "https://pixabay.com/api/?key=%s&q=%s&image_type=photo&per_page=20" % [secrets.PIXABAY_API_KEY, encoded_query]
+	var url: String = "https://pixabay.com/api/?key=%s&q=%s&image_type=photo&per_page=20" % [SessionConfig.pixabay_api_key, encoded_query]
 	search_request.request(url)
 	
 func _on_search_completed(result: int, response_code: int, headers:PackedStringArray, body: PackedByteArray) -> void:

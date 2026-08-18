@@ -6,7 +6,26 @@
 [ext_resource type="Script" uid="uid://dlgponuee36km" path="res://Scripts/ref_loader.gd" id="4_66kr7"]
 [ext_resource type="Script" uid="uid://betgxfh4p2ddw" path="res://Scripts/pixabay_loader.gd" id="4_blbbb"]
 [ext_resource type="Script" uid="uid://dh45htkwoq3ff" path="res://tool_bar.gd" id="4_v0vuq"]
+[ext_resource type="Texture2D" uid="uid://rya028scj1im" path="res://images/devin-h-p51V2hcqRhc-unsplash.jpg" id="5_xab2o"]
+[ext_resource type="Texture2D" uid="uid://htmkyt7wk8mx" path="res://images/scott-webb-WwWkgOMU8H8-unsplash.jpg" id="6_gnepd"]
+[ext_resource type="Texture2D" uid="uid://bhubxcmrbgfx8" path="res://icon.svg" id="7_g3blj"]
+[ext_resource type="Texture2D" uid="uid://bg17dj5etdqjh" path="res://images/anton-be-ODhxNCO8XHY-unsplash.jpg" id="8_1yb82"]
 [ext_resource type="AudioStream" uid="uid://mo8awado628i" path="res://tap-b.ogg" id="9_56r6y"]
+[ext_resource type="Texture2D" uid="uid://dgpgpp3lfvsin" path="res://images/heber-davis-E15BQufHzJs-unsplash.jpg" id="9_c3xdr"]
+[ext_resource type="Texture2D" uid="uid://bmsuo10q60n1e" path="res://images/gaetan-meyer-nDWZDpV4X5o-unsplash.jpg" id="10_7obx6"]
+[ext_resource type="Texture2D" uid="uid://by0ytqbghe4py" path="res://images/helena-lopes-lIeqGEdvex0-unsplash.jpg" id="11_ak4dp"]
+[ext_resource type="Texture2D" uid="uid://0h7a4tnwnsfq" path="res://images/kwang-javier-qcRMfoIWxRo-unsplash.jpg" id="12_g1chb"]
+[ext_resource type="Texture2D" uid="uid://n5ixfm4qc6t2" path="res://images/khara-woods-3lKFHLCKark-unsplash.jpg" id="13_qolhj"]
+[ext_resource type="Texture2D" uid="uid://x23jnhqdxfkp" path="res://images/tommaso-urli-USg-3Z9T4uY-unsplash.jpg" id="14_ktf2w"]
+[ext_resource type="Texture2D" uid="uid://3ck3yuhv57wb" path="res://images/herry-sucahya-jYQTLUAIN3A-unsplash.jpg" id="15_prpt8"]
+[ext_resource type="Texture2D" uid="uid://okg3l85hx6rd" path="res://images/luis-quintero-qKspdY9XUzs-unsplash.jpg" id="16_k61ql"]
+[ext_resource type="Texture2D" uid="uid://dlxdl3mbunj1a" path="res://images/manja-vitolic-gKXKBY-C-Dk-unsplash.jpg" id="17_w7qkd"]
+[ext_resource type="Texture2D" uid="uid://geodip56a33" path="res://images/virender-singh-hE0nmTffKtM-unsplash.jpg" id="18_b3lff"]
+[ext_resource type="Texture2D" uid="uid://bj5ni67qm73k6" path="res://images/mike-kenneally-tNALoIZhqVM-unsplash.jpg" id="19_nnnd1"]
+[ext_resource type="Texture2D" uid="uid://wr2vtd6ay7k7" path="res://images/george-pagan-iii-DLqHu9V6WHE-unsplash.jpg" id="20_myhsd"]
+[ext_resource type="Texture2D" uid="uid://c1euq4e8iwr0f" path="res://images/ksenia-yakovleva-2deJb8E9hTk-unsplash.jpg" id="21_yekom"]
+[ext_resource type="Texture2D" uid="uid://b2nvtkxlcduvn" path="res://images/jacques-le-henaff-ic-13C3QhAI-unsplash.jpg" id="22_egs1v"]
+[ext_resource type="Texture2D" uid="uid://c0elgu5qqilad" path="res://images/towfiqu-barbhuiya-uNi4M3sHqOo-unsplash.jpg" id="23_qrqwa"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_56r6y"]
 
@@ -38,6 +57,7 @@ script = ExtResource("3_bm03r")
 
 [node name="ResLoader" type="Node2D" parent="." unique_id=600373687]
 script = ExtResource("4_66kr7")
+images = Array[Texture2D]([ExtResource("5_xab2o"), ExtResource("6_gnepd"), ExtResource("7_g3blj"), ExtResource("8_1yb82"), ExtResource("9_c3xdr"), ExtResource("10_7obx6"), ExtResource("11_ak4dp"), ExtResource("12_g1chb"), ExtResource("13_qolhj"), ExtResource("14_ktf2w"), ExtResource("15_prpt8"), ExtResource("16_k61ql"), ExtResource("17_w7qkd"), ExtResource("18_b3lff"), ExtResource("19_nnnd1"), ExtResource("20_myhsd"), ExtResource("21_yekom"), ExtResource("22_egs1v"), ExtResource("23_qrqwa")])
 
 [node name="PixabayLoader" type="Node2D" parent="." unique_id=1352356018]
 script = ExtResource("4_blbbb")
@@ -56,6 +76,11 @@ script = ExtResource("4_v0vuq")
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "SAVE"
+
+[node name="Undo" type="Button" parent="ToolBar" unique_id=450279812]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Undo"
 
 [node name="TimeLabel" type="Label" parent="ToolBar" unique_id=73304235]
 layout_mode = 2
@@ -78,11 +103,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = SubResource("StyleBoxTexture_56r6y")
 text = "+"
-
-[node name="Undo" type="Button" parent="ToolBar" unique_id=450279812]
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "Undo"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="ToolBar" unique_id=1238375095]
 stream = ExtResource("9_56r6y")

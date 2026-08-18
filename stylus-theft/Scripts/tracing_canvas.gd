@@ -90,18 +90,23 @@ func _on_timer_timeout() -> void:
 	image_source_choice()
 	
 func image_source_choice():
+	DebugLog.debug_log("image_source_choice called")
 	if OS.has_feature("web"):
 		res_loader.load_random_image()
 	if SessionConfig.use_gallery and SessionConfig.use_pixabay:
 		if randi() % 2 == 0:
 			gallery_loader.load_next_gallery_image()
+			DebugLog.debug_log("branch: gallery")
 		else:
 			pixabay_loader.search_and_load(SessionConfig.pixabay_query)
 	elif SessionConfig.use_pixabay:
+		DebugLog.debug_log("branch: p8xabay")
 		pixabay_loader.search_and_load(SessionConfig.pixabay_query)
 	elif SessionConfig.use_gallery:
 		gallery_loader.load_next_gallery_image()
+		DebugLog.debug_log("branch: gallery")
 	else:
+		#OS.alert("Hit res_loader branch")
 		res_loader.load_random_image()
 	
 		

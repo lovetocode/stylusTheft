@@ -1,46 +1,39 @@
 [gd_scene format=3 uid="uid://xlshyr14ngw5"]
 
-[node name="Settings" type="Node2D" unique_id=485688192]
+[ext_resource type="Script" uid="uid://d1nwl6irek0w6" path="res://Scripts/settings.gd" id="1_x2hje"]
 
-[node name="background" type="ColorRect" parent="." unique_id=1423848693]
-offset_right = 2285.0
-offset_bottom = 1096.0
-color = Color(0.65625, 0.124755874, 0.6479454, 1)
+[node name="Settings" type="Node2D" unique_id=562345225]
+script = ExtResource("1_x2hje")
 
-[node name="Settings" type="Label" parent="." unique_id=344986912]
-offset_left = 30.0
-offset_top = -26.0
-offset_right = 805.0
-offset_bottom = 111.0
-theme_override_font_sizes/font_size = 100
-text = "Session Settings"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=327181902]
+offset_right = 587.0
+offset_bottom = 145.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1997772751]
-offset_top = 100.0
-offset_right = 529.0
-offset_bottom = 342.0
-theme_override_constants/separation = 50
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1754968637]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=836971069]
 layout_mode = 2
+theme_override_constants/separation = 40
 
-[node name="SessionTime" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=772431123]
+[node name="PixabayLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=714091058]
 layout_mode = 2
-theme_override_font_sizes/font_size = 70
-text = "Session Time"
+theme_override_font_sizes/font_size = 80
+text = "Pxabay API Key"
 
-[node name="SessionTimeInput" type="SpinBox" parent="VBoxContainer/HBoxContainer" unique_id=464258507]
+[node name="PixabayLineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer" unique_id=987085340]
 layout_mode = 2
+theme_override_constants/minimum_character_width = 50
+secret = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=234356819]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=342593867]
 layout_mode = 2
+theme_override_constants/separation = 40
 
-[node name="PerImageTime" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=171742956]
+[node name="SAVE" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=879004564]
 layout_mode = 2
-theme_override_font_sizes/font_size = 70
-text = "Image Time"
+theme_override_font_sizes/font_size = 40
+text = "Save"
 
-[node name="SessionTimeInput" type="SpinBox" parent="VBoxContainer/HBoxContainer2" unique_id=1129582832]
+[node name="BACK" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=1479925951]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "BACK
+"

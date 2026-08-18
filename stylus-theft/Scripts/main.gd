@@ -7,6 +7,8 @@ func _ready() -> void:
 	_on_size_change()
 	$CenterContainer/HBoxContainer/setUp.pressed.connect(_on_setup_pressed)
 	$CenterContainer/HBoxContainer/Start.pressed.connect(_on_start_pressed)
+	$CenterContainer/HBoxContainer/settings.pressed.connect(_on_settings_pressed)
+	
 	
 func _on_size_change():
 	var vp_size = get_viewport_rect().size
@@ -18,3 +20,6 @@ func _on_setup_pressed():
 
 func _on_start_pressed():
 	get_tree().change_scene_to_file("res://tracing_canvas.tscn")
+
+func _on_settings_pressed():
+	get_tree().change_scene_to_file("res://settings.tscn")

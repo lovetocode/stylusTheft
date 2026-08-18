@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="stylusTheft"
-run/main_scene="uid://e0aruih54aqe"
+run/main_scene="uid://j1c5fqrnfofd"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 SessionConfig="*uid://8b2fh4r3nvky"
+DebugLog="*uid://cvn81v8mveesl"
 
 [display]
 
