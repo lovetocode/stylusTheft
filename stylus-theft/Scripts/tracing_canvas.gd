@@ -59,6 +59,9 @@ func _process(delta: float) -> void:
 	if sesson_elapsed >= session_time:
 		session_active = false
 		timer.stop()
+		$GameOverLabel.visible = true
+		await get_tree().create_timer(1.0).timeout
+		get_tree().change_scene_to_file("res://main.tscn")
 	
 func setup_top_bar():
 	

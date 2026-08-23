@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://ccvw8jeetkcht" path="res://Scripts/sessionsettings.gd" id="1_dvvwr"]
 
+[sub_resource type="Theme" id="Theme_dvvwr"]
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_7rbto"]
+default_font_size = 50
+
 [node name="Settings" type="Node2D" unique_id=485688192]
 script = ExtResource("1_dvvwr")
 
@@ -40,6 +46,8 @@ text = "Session Time"
 [node name="SessionTimeInput" type="SpinBox" parent="VBoxContainer/HBoxContainer" unique_id=464258507]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
+theme = SubResource("Theme_dvvwr")
+theme_type_variation = &"text"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=234356819]
 layout_mode = 2
@@ -52,6 +60,8 @@ text = "Image Time"
 [node name="ImageTimeInput" type="SpinBox" parent="VBoxContainer/HBoxContainer2" unique_id=1129582832]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
+theme = SubResource("Theme_7rbto")
+theme_type_variation = &"text"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=1289243659]
 layout_mode = 2

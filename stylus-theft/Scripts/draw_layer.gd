@@ -61,7 +61,12 @@ func _on_save_requested():
 	texture_rect.visible = false
 	await RenderingServer.frame_post_draw
 	var img:Image = get_viewport().get_texture().get_image()
-	img.save_png("user://drawing_%d.png" % Time.get_unix_time_from_system())
+	
+	var dir = DirAccess.open("user://")
+	if not dir.dir_exists("drawings"):
+		dir.make_dir("drawings")
+		
+	img.save_png("user://drawings/drawing_%d.png" % Time.get_unix_time_from_system())
 	texture_rect.visible = true
 	
 func _on_brush_size_changed(new_size: float):

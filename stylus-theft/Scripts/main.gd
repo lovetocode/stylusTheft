@@ -5,10 +5,10 @@ extends Node2D
 func _ready() -> void:
 	get_viewport().size_changed.connect(_on_size_change)
 	_on_size_change()
-	$CenterContainer/HBoxContainer/setUp.pressed.connect(_on_setup_pressed)
-	$CenterContainer/HBoxContainer/Start.pressed.connect(_on_start_pressed)
-	$CenterContainer/HBoxContainer/settings.pressed.connect(_on_settings_pressed)
-	
+	$VBoxContainer/CenterContainer/HBoxContainer/setUp.pressed.connect(_on_setup_pressed)
+	$VBoxContainer/CenterContainer/HBoxContainer/Start.pressed.connect(_on_start_pressed)
+	$VBoxContainer/CenterContainer/HBoxContainer/settings.pressed.connect(_on_settings_pressed)
+	$VBoxContainer/CenterContainer/HBoxContainer/Gallery.pressed.connect(_on_gallery_pressed)
 	
 func _on_size_change():
 	var vp_size = get_viewport_rect().size
@@ -23,3 +23,6 @@ func _on_start_pressed():
 
 func _on_settings_pressed():
 	get_tree().change_scene_to_file("res://settings.tscn")
+
+func _on_gallery_pressed():
+	get_tree().change_scene_to_file("res://gallery.tscn")

@@ -6,8 +6,8 @@
 script = ExtResource("1_x2hje")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=327181902]
-offset_right = 587.0
-offset_bottom = 145.0
+offset_right = 1810.0
+offset_bottom = 218.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=836971069]
 layout_mode = 2
@@ -20,8 +20,8 @@ text = "Pxabay API Key"
 
 [node name="PixabayLineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer" unique_id=987085340]
 layout_mode = 2
-theme_override_constants/minimum_character_width = 50
-secret = true
+theme_override_constants/minimum_character_width = 25
+theme_override_font_sizes/font_size = 50
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=342593867]
 layout_mode = 2
@@ -37,3 +37,8 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "BACK
 "
+
+[node name="Paste" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=698786998]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Paste"

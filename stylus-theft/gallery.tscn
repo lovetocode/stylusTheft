@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b0vaf6m5ew4fu"]
+
+[ext_resource type="Script" uid="uid://b038bom7tlibl" path="res://Scripts/gallery.gd" id="1_ay20g"]
+
+[node name="Gallery" type="Node2D" unique_id=1154388632]
+script = ExtResource("1_ay20g")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1753394324]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=1113635319]
+layout_mode = 2
+columns = 3
+
+[node name="BackButton" type="Button" parent="." unique_id=444675165]
+offset_left = 375.0
+offset_top = 960.0
+offset_right = 513.0
+offset_bottom = 1037.0
+theme_override_font_sizes/font_size = 50
+text = "BACK"
