@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://b0vaf6m5ew4fu"]
 
 [ext_resource type="Script" uid="uid://b038bom7tlibl" path="res://Scripts/gallery.gd" id="1_ay20g"]
+[ext_resource type="Texture2D" uid="uid://dj1rf6288yc23" path="res://checkerboard_20.png" id="2_0uoo4"]
 
 [node name="Gallery" type="Node2D" unique_id=1154388632]
 script = ExtResource("1_ay20g")
+
+[node name="Checkerboard" type="TextureRect" parent="." unique_id=1625995085]
+offset_right = 1998.0
+offset_bottom = 1127.0
+texture = ExtResource("2_0uoo4")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1753394324]
 offset_right = 40.0
