@@ -16,7 +16,7 @@ offset_left = -25.0
 offset_top = 7.0
 offset_right = 2260.0
 offset_bottom = 1103.0
-color = Color(0.65625, 0.124755874, 0.6479454, 1)
+color = Color(0.2901961, 0.2901961, 0.2901961, 1)
 
 [node name="Settings" type="Label" parent="." unique_id=344986912]
 offset_left = 722.0

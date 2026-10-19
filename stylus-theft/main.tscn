@@ -4,63 +4,68 @@
 
 [node name="Main" type="Node2D" unique_id=21034503]
 script = ExtResource("1_ig7tw")
+metadata/_edit_vertical_guides_ = [-2125.0]
 
 [node name="background" type="ColorRect" parent="." unique_id=1537605044]
-offset_right = 1738.0
-offset_bottom = 1033.0
-color = Color(0.7083334, 0.103298604, 0.62325037, 1)
+offset_right = 1919.0
+offset_bottom = 1085.0
+color = Color(0.2890625, 0.28830972, 0.28830972, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=261851295]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=653639636]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -630.0
-offset_top = -188.5
-offset_right = 2364.0
-offset_bottom = 1344.0
 grow_horizontal = 2
 grow_vertical = 2
+offset_transform_enabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=261851295]
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="AppName" type="Label" parent="VBoxContainer" unique_id=1769973156]
+[node name="HBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=903249348]
+clip_contents = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 200
+theme_override_constants/separation = 25
+
+[node name="AppName" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1769973156]
+layout_mode = 2
+theme_override_font_sizes/font_size = 120
 text = "Stylus Theft"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer" unique_id=653639636]
+[node name="Start" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=141608209]
+custom_minimum_size = Vector2(500, 120)
 layout_mode = 2
-offset_transform_enabled = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer" unique_id=858885004]
-clip_contents = true
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="settings" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer" unique_id=672868208]
-custom_minimum_size = Vector2(300, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "Settings"
-
-[node name="setUp" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer" unique_id=281287484]
-custom_minimum_size = Vector2(300, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "SetUp
-"
-
-[node name="Start" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer" unique_id=141608209]
-custom_minimum_size = Vector2(300, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 44
 text = "Start"
 
-[node name="Gallery" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer" unique_id=295379659]
-custom_minimum_size = Vector2(300, 100)
+[node name="setUp" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=281287484]
+custom_minimum_size = Vector2(500, 120)
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 44
+text = "Session SetUp
+"
+
+[node name="Gallery" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=295379659]
+custom_minimum_size = Vector2(500, 120)
+clip_contents = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
 text = "Gallery"
+
+[node name="settings" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=672868208]
+custom_minimum_size = Vector2(500, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Settings"
+
+[node name="Exit" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=24192001]
+custom_minimum_size = Vector2(500, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Exit
+"
