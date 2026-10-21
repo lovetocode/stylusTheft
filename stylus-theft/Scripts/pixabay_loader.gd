@@ -63,7 +63,7 @@ func _refill_cache(query: String) -> void:
 	_fetch_one(query)
 
 func _fetch_one(query: String) -> void:
-	var url := "https://pixabay.com/api/?key=%s&q=%s&image_type=photo&per_page=20" % [SessionConfig.PIXABAY_API_KEY, query.uri_encode()]
+	var url := "https://pixabay.com/api/?key=%s&q=%s&image_type=photo&per_page=20" % [SessionConfig.pixabay_api_key, query.uri_encode()]
 	search_request.request(url)
 
 func _on_search_completed(result, response_code, headers, body) -> void:

@@ -134,6 +134,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "00:00"
 
+[node name="Pause" type="Button" parent="ToolBar" unique_id=97960413]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Pause
+"
+
 [node name="GameOverLabel" type="Label" parent="." unique_id=1537817882]
 visible = false
 offset_left = 713.0
