@@ -79,6 +79,8 @@ func _on_save_requested():
 		
 	img.save_png("user://drawings/drawing_%d.png" % Time.get_unix_time_from_system())
 	texture_rect.visible = true
+	tool_bar.visible = true
+	background.visible = true
 	
 func _on_brush_size_changed(new_size: float):
 		brush_width = new_size
