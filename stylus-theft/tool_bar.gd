@@ -5,6 +5,7 @@ signal save_requested
 signal next_requested
 signal brush_size_changed(new_size: float)
 signal brush_color_changed(new_color: Color)
+signal pause_requested
 
 var brush_size_min: float = 1.0
 var brush_size_max: float = 40.0
@@ -21,6 +22,7 @@ func _ready() -> void:
 	$ColorSwatch/ColorPickerPopup.visible = false
 	$ColorSwatch.pressed.connect(_on_color_swatch_pressed)
 	$Next.pressed.connect(_on_next_pressed)
+	$Pause.pressed.connect(_on_pause_requested)
 	
 func _on_undo_pressed():
 	undo_requested.emit()
@@ -53,4 +55,8 @@ func _on_color_swatch_pressed() -> void:
 	
 func _on_next_pressed():
 	next_requested.emit()
+	
+func _on_pause_requested():
+	pause_requested.emit()
+	
 	

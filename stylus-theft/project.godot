@@ -12,6 +12,7 @@ config_version=5
 
 config/name="stylusTheft"
 run/main_scene="uid://j1c5fqrnfofd"
+config/quit_on_go_back=false
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 

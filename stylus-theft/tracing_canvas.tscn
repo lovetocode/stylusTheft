@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://c1euq4e8iwr0f" path="res://images/ksenia-yakovleva-2deJb8E9hTk-unsplash.jpg" id="21_yekom"]
 [ext_resource type="Texture2D" uid="uid://b2nvtkxlcduvn" path="res://images/jacques-le-henaff-ic-13C3QhAI-unsplash.jpg" id="22_egs1v"]
 [ext_resource type="Texture2D" uid="uid://c0elgu5qqilad" path="res://images/towfiqu-barbhuiya-uNi4M3sHqOo-unsplash.jpg" id="23_qrqwa"]
+[ext_resource type="PackedScene" uid="uid://bmyni7fdujd34" path="res://pause_menu.tscn" id="27_gnepd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_56r6y"]
 
@@ -139,6 +140,8 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Pause
 "
+
+[node name="PauseMenu" parent="ToolBar/Pause" unique_id=33557398 instance=ExtResource("27_gnepd")]
 
 [node name="GameOverLabel" type="Label" parent="." unique_id=1537817882]
 visible = false

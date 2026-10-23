@@ -9,6 +9,7 @@ extends Node2D
 @onready var gallery_loader = $GalleryLoader
 @onready var session_time_label = $ToolBar/session_time_label
 @onready var res_loader = $ResLoader
+@onready var pause_menu = $ToolBar/Pause/PauseMenu
 
 var sesson_elapsed: float = 0.0
 var session_active: bool = true
@@ -30,6 +31,7 @@ func _ready() -> void:
 	gallery_loader.scan_gallery()
 	image_source_choice()
 	timer.timeout.connect(_on_timer_timeout)
+	top_bar.pause_requested.connect(pause_menu.open)
 	
 func _on_pixabay_image_ready(texture: ImageTexture) -> void:
 	reference.texture = texture
