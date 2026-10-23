@@ -26,3 +26,53 @@ offset_right = 513.0
 offset_bottom = 1037.0
 theme_override_font_sizes/font_size = 50
 text = "BACK"
+
+[node name="Viewer" type="CanvasLayer" parent="." unique_id=1850871924]
+layer = 10
+
+[node name="Backdrop" type="ColorRect" parent="Viewer" unique_id=1732038695]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.38932294, 0.37360808, 0.37360808, 1)
+
+[node name="FullImage" type="TextureRect" parent="Viewer" unique_id=350815654]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+expand_mode = 1
+stretch_mode = 3
+
+[node name="Buttons" type="HBoxContainer" parent="Viewer" unique_id=666213055]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="CloseButton" type="Button" parent="Viewer/Buttons" unique_id=1125258609]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Close"
+
+[node name="ExportButton" type="Button" parent="Viewer/Buttons" unique_id=1514756091]
+custom_minimum_size = Vector2(300, 100)
+clip_contents = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Export"
+
+[node name="DeleteButton" type="Button" parent="Viewer/Buttons" unique_id=704663649]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Delete"
