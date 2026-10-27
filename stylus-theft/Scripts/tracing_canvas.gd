@@ -61,6 +61,7 @@ func _process(delta: float) -> void:
 	if sesson_elapsed >= session_time:
 		session_active = false
 		timer.stop()
+		await draw_layer.autosave_if_needed()
 		$GameOverLabel.visible = true
 		await get_tree().create_timer(1.0).timeout
 		get_tree().change_scene_to_file("res://main.tscn")
@@ -82,34 +83,34 @@ func setup_top_bar():
 	
 func _on_next_requested():
 	timer.stop()
+	await draw_layer.autosave_if_needed()
 	clear_drawing()
 	timer.start()
 	image_source_choice()
 	
 func clear_drawing():
 	draw_layer.strokes.clear()
+	draw_layer.dirty = false
 	draw_layer.queue_redraw()
 	
 func _on_timer_timeout() -> void:
+	await draw_layer.autosave_if_needed()
 	clear_drawing()
 	image_source_choice()
 	
 func image_source_choice():
-	DebugLog.debug_log("image_source_choice called")
 	if OS.has_feature("web"):
 		res_loader.load_random_image()
+		return
 	if SessionConfig.use_gallery and SessionConfig.use_pixabay:
 		if randi() % 2 == 0:
 			gallery_loader.load_next_gallery_image()
-			DebugLog.debug_log("branch: gallery")
 		else:
 			pixabay_loader.search_and_load(SessionConfig.pixabay_query)
 	elif SessionConfig.use_pixabay:
-		DebugLog.debug_log("branch: p8xabay")
 		pixabay_loader.search_and_load(SessionConfig.pixabay_query)
 	elif SessionConfig.use_gallery:
 		gallery_loader.load_next_gallery_image()
-		DebugLog.debug_log("branch: gallery")
 	else:
 		#OS.alert("Hit res_loader branch")
 		res_loader.load_random_image()

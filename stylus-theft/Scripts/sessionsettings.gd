@@ -5,7 +5,7 @@ extends Node2D
 @onready var session_time: SpinBox  = $VBoxContainer/HBoxContainer/SessionTimeInput
 @onready var use_gallery_checkbox: CheckBox = $VBoxContainer/HBoxContainer4/UseGalleryCheckbox
 @onready var use_pixabay_checkbox: CheckBox = $VBoxContainer/HBoxContainer4/UsePixabayCheckbox
-
+@onready var auto_save_checkbox: CheckBox = $VBoxContainer/HBoxContainer4/AutoSaveCheckbox
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,6 +18,7 @@ func _ready() -> void:
 	image_time.value = SessionConfig.image_time / 60
 	use_gallery_checkbox.button_pressed = SessionConfig.use_gallery
 	use_pixabay_checkbox.button_pressed = SessionConfig.use_pixabay
+	auto_save_checkbox.button_pressed = SessionConfig.auto_save
 	
 func _on_size_changed():
 	var vp_size = get_viewport_rect().size
@@ -36,5 +37,6 @@ func _on_save_pressed() -> void:
 	SessionConfig.session_time = session_time.value * 60
 	SessionConfig.use_gallery = use_gallery_checkbox.button_pressed
 	SessionConfig.use_pixabay = use_pixabay_checkbox.button_pressed
+	SessionConfig.auto_save = auto_save_checkbox.button_pressed
 	SessionConfig.save_config()
 	

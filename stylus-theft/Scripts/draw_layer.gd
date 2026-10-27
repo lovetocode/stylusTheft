@@ -22,6 +22,7 @@ var brush_color: Color = Color.BLACK
 var brush_width: float = 3.0
 var current_color: Color = Color.BLACK
 var current_width: float = 3.0
+var dirty := false
 
 
 func _input(event: InputEvent) -> void:
@@ -41,6 +42,7 @@ func _input(event: InputEvent) -> void:
 					{"points": current_points,
 					"width": current_width,
 					"color": current_color})
+				dirty = true
 			current_points = PackedVector2Array()
 		queue_redraw()
 
@@ -62,11 +64,15 @@ func _draw() -> void:
 		draw_polyline(current_points, current_color, current_width)
 
 func _on_undo_requested():
+	dirty = true
 	if strokes.size() > 0:
 		strokes.resize(strokes.size() - 1)
 		queue_redraw()
 
 func _on_save_requested():
+	await save_drawing()
+	
+func save_drawing():
 	texture_rect.visible = false
 	background.visible = false
 	tool_bar.visible = false
@@ -81,6 +87,11 @@ func _on_save_requested():
 	texture_rect.visible = true
 	tool_bar.visible = true
 	background.visible = true
+	dirty = false
+	
+func autosave_if_needed():
+	if SessionConfig.auto_save and dirty and strokes.size() > 0:
+		await save_drawing()
 	
 func _on_brush_size_changed(new_size: float):
 		brush_width = new_size

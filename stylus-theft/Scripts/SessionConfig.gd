@@ -6,6 +6,7 @@ var pixabay_query: String = "art"
 var use_gallery: bool = true
 var use_pixabay: bool = false
 var pixabay_api_key: String
+var auto_save: bool = true
 
 const SAVE_PATH = "user://session_config.json"
 
@@ -20,7 +21,8 @@ func save_config():
 		 "pixabay_query": pixabay_query,
 		"use_gallery": use_gallery,
 		"use_pixabay": use_pixabay,
-		"pixabay_api_key": pixabay_api_key
+		"pixabay_api_key": pixabay_api_key,
+		"auto_save": auto_save
 	}
 	
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -41,3 +43,4 @@ func load_config():
 		use_pixabay = data.get("use_pixabay", use_pixabay)
 		pixabay_query = data.get("pixabay_query", pixabay_query)
 		pixabay_api_key = data.get("pixabay_api_key", pixabay_api_key)
+		auto_save = data.get("auto_save", auto_save)
