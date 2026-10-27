@@ -23,20 +23,27 @@ var brush_width: float = 3.0
 var current_color: Color = Color.BLACK
 var current_width: float = 3.0
 var dirty := false
+var active_touch := -1
 
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
-		if event.position.y < bar_height:
-			return
 		if event.pressed:
-			# New stroke starts here.
+			# ignore a new touch if we're already drawing, or it's on the toolbar
+			if event.position.y < bar_height:
+				return
+			if active_touch != -1 and event.index != active_touch:
+				return
+			active_touch = event.index
 			current_points = PackedVector2Array()
 			current_points.append(to_local(event.position))
 			current_width = brush_width
 			current_color = brush_color
 		else:
-			# Finger/stylus lifted - finalize this stroke.
+			# only the finger that started the stroke can end it
+			if event.index != active_touch:
+				return
+			active_touch = -1
 			if current_points.size() > 0:
 				strokes.append(
 					{"points": current_points,
@@ -47,11 +54,13 @@ func _input(event: InputEvent) -> void:
 		queue_redraw()
 
 	elif event is InputEventScreenDrag:
+		if event.index != active_touch:
+			return
 		if event.position.y < bar_height:
 			return
-		# Stylus is moving while touching the screen.
 		current_points.append(to_local(event.position))
 		queue_redraw()
+
 
 func _draw() -> void:
 	# Draw every finished stroke.
