@@ -32,6 +32,8 @@ func _ready() -> void:
 	image_source_choice()
 	timer.timeout.connect(_on_timer_timeout)
 	top_bar.pause_requested.connect(pause_menu.open)
+	pause_menu.quit_to_menu_requested.connect(_on_quit_to_menu)
+	pause_menu.exit_requested.connect(_on_exit_requested)
 	
 func _on_pixabay_image_ready(texture: ImageTexture) -> void:
 	reference.texture = texture
@@ -48,7 +50,7 @@ func imageduration():
 	return [minutes, seconds]
 	
 func _process(delta: float) -> void:
-	label.text = "i: %2d:%02d" % imageduration()
+	label.text = "img: %2d:%02d" % imageduration()
 	
 	if session_active == false:
 		return
@@ -56,7 +58,7 @@ func _process(delta: float) -> void:
 	var remaining: float = max(session_time - sesson_elapsed, 0.0)
 	var minutes: int = int(remaining) / 60
 	var seconds: int = int(remaining) % 60
-	session_time_label.text = "S: %d:%02d" % [minutes, seconds]
+	session_time_label.text = "Sess: %d:%02d" % [minutes, seconds]
 	
 	if sesson_elapsed >= session_time:
 		session_active = false
@@ -75,8 +77,9 @@ func setup_top_bar():
 	top_bar.size.x = get_viewport_rect().size.x
 	top_bar.size.y = bar_height
 	
-	reference.size.y -= bar_height
-	reference.position.y = bar_height
+	var vp = get_viewport().get_visible_rect().size
+	reference.position = Vector2(0, bar_height)
+	reference.size = Vector2(vp.x, vp.y - bar_height)
 	
 	draw_layer.position.y = bar_height
 	draw_layer.bar_height = bar_height
@@ -97,6 +100,16 @@ func _on_timer_timeout() -> void:
 	await draw_layer.autosave_if_needed()
 	clear_drawing()
 	image_source_choice()
+	
+func _on_quit_to_menu() -> void:
+	pause_menu.close()
+	await draw_layer.autosave_if_needed()
+	get_tree().change_scene_to_file("res://main.tscn")
+	
+func _on_exit_requested() -> void:
+	pause_menu.close()
+	await draw_layer.autosave_if_needed()
+	get_tree().quit()
 	
 func image_source_choice():
 	if OS.has_feature("web"):

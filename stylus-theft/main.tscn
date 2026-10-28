@@ -9,7 +9,7 @@ metadata/_edit_vertical_guides_ = [-2125.0]
 [node name="background" type="ColorRect" parent="." unique_id=1537605044]
 offset_right = 1919.0
 offset_bottom = 1085.0
-color = Color(0.2890625, 0.28830972, 0.28830972, 1)
+color = Color(0.18039216, 0.18039216, 0.18039216, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=653639636]
 anchors_preset = 15

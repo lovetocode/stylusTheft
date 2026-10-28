@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+signal quit_to_menu_requested
+signal exit_requested
+
 @onready var resume_button: Button = $CenterContainer/VBoxContainer/ResumeButton
 @onready var menu_button: Button = $CenterContainer/VBoxContainer/QuitToMenuButton
 @onready var exit_button: Button = $CenterContainer/VBoxContainer/ExitButton
@@ -11,6 +14,7 @@ func _ready() -> void:
 	menu_button.pressed.connect(_on_menu_pressed)
 	exit_button.pressed.connect(func(): get_tree().quit())
 	exit_button.visible = not OS.has_feature("web")
+	exit_button.pressed.connect(func(): exit_requested.emit())
 
 func open() -> void:
 	visible = true
@@ -21,8 +25,7 @@ func close() -> void:
 	get_tree().paused = false
 
 func _on_menu_pressed() -> void:
-	get_tree().paused = false
-	get_tree().change_scene_to_file("res://main.tscn")
+	quit_to_menu_requested.emit()
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
