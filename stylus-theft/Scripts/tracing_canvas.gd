@@ -64,8 +64,9 @@ func _process(delta: float) -> void:
 		session_active = false
 		timer.stop()
 		await draw_layer.autosave_if_needed()
+		$reference.visible = false
 		$GameOverLabel.visible = true
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(3.0).timeout
 		get_tree().change_scene_to_file("res://main.tscn")
 	
 func setup_top_bar():
@@ -97,6 +98,8 @@ func clear_drawing():
 	draw_layer.queue_redraw()
 	
 func _on_timer_timeout() -> void:
+	if not session_active:
+		return
 	await draw_layer.autosave_if_needed()
 	clear_drawing()
 	image_source_choice()

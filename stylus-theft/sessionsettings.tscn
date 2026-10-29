@@ -19,14 +19,18 @@ offset_bottom = 1103.0
 color = Color(0.18039216, 0.18039216, 0.18039216, 1)
 
 [node name="Settings" type="Label" parent="." unique_id=344986912]
-offset_left = 722.0
-offset_top = 58.0
-offset_right = 1497.0
-offset_bottom = 195.0
-theme_override_font_sizes/font_size = 100
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 732.0
+offset_top = 69.0
+offset_right = 1275.0
+offset_bottom = 165.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 70
 text = "Session Settings"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1997772751]
 offset_left = 71.0
@@ -37,6 +41,7 @@ theme_override_constants/separation = 50
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1754968637]
 layout_mode = 2
+theme_override_constants/separation = 30
 
 [node name="SessionTime" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=772431123]
 layout_mode = 2
@@ -48,9 +53,11 @@ custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 theme = SubResource("Theme_dvvwr")
 theme_type_variation = &"text"
+suffix = "min"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=234356819]
 layout_mode = 2
+theme_override_constants/separation = 30
 
 [node name="ImageTime" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=171742956]
 layout_mode = 2
@@ -62,9 +69,11 @@ custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 theme = SubResource("Theme_7rbto")
 theme_type_variation = &"text"
+suffix = "min"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=1289243659]
 layout_mode = 2
+theme_override_constants/separation = 30
 
 [node name="ImageTopic" type="Label" parent="VBoxContainer/HBoxContainer3" unique_id=1762989097]
 layout_mode = 2
@@ -97,14 +106,18 @@ text = "Auto Save"
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer" unique_id=1192553519]
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 30
 
 [node name="Back" type="Button" parent="VBoxContainer/HBoxContainer5" unique_id=930538076]
+custom_minimum_size = Vector2(200, 80)
+clip_contents = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
 text = "Back"
 
 [node name="Save" type="Button" parent="VBoxContainer/HBoxContainer5" unique_id=1934567989]
+custom_minimum_size = Vector2(200, 80)
+clip_contents = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
 text = "Save"

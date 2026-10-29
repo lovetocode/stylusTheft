@@ -20,12 +20,13 @@ layout_mode = 2
 columns = 3
 
 [node name="BackButton" type="Button" parent="." unique_id=444675165]
+custom_minimum_size = Vector2(200, 80)
 offset_left = 375.0
 offset_top = 960.0
 offset_right = 513.0
 offset_bottom = 1037.0
 theme_override_font_sizes/font_size = 50
-text = "BACK"
+text = "Back"
 
 [node name="Viewer" type="CanvasLayer" parent="." unique_id=1850871924]
 layer = 10
