@@ -92,7 +92,15 @@ func _on_delete_pressed() -> void:
 	_close_viewer()
 
 func _on_export_pressed() -> void:
-	export_drawing(current_path)
+	if OS.has_feature("web"):
+		var bytes := FileAccess.get_file_as_bytes(current_path)
+		JavaScriptBridge.download_buffer(bytes, current_path.get_file(), "image/png")
+		return
+	var folder = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/StylusTheft"
+	DirAccess.make_dir_recursive_absolute(folder)
+	var dest = folder + "/" + current_path.get_file()
+	var err = DirAccess.copy_absolute(ProjectSettings.globalize_path(current_path), dest)
+	OS.alert("Export: %s\n%s" % [error_string(err), dest])
 
 func export_drawing(src: String) -> void:
 	var folder = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/StylusTheft"
