@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SessionConfig="*uid://8b2fh4r3nvky"
-DebugLog="*uid://cvn81v8mveesl"
+AppTheme="*uid://b6temnbb4gjwj"
 
 [display]
 

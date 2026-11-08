@@ -25,6 +25,7 @@ func _ready() -> void:
 	viewer.visible = false
 	load_drawings()
 	full_image.offset_bottom = -150
+	AppTheme.apply_to(self)
 
 func _on_viewport_resized() -> void:
 	var vp_size = get_viewport_rect().size

@@ -19,6 +19,9 @@ func _ready() -> void:
 	use_gallery_checkbox.button_pressed = SessionConfig.use_gallery
 	use_pixabay_checkbox.button_pressed = SessionConfig.use_pixabay
 	auto_save_checkbox.button_pressed = SessionConfig.auto_save
+	AppTheme.apply_to(self)
+	_sync_bg()
+	
 	
 func _on_size_changed():
 	var vp_size = get_viewport_rect().size
@@ -40,3 +43,5 @@ func _on_save_pressed() -> void:
 	SessionConfig.auto_save = auto_save_checkbox.button_pressed
 	SessionConfig.save_config()
 	
+func _sync_bg() -> void:
+	$background.color = AppTheme.colors.black

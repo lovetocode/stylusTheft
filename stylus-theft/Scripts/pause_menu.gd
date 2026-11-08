@@ -15,6 +15,7 @@ func _ready() -> void:
 	exit_button.pressed.connect(func(): get_tree().quit())
 	exit_button.visible = not OS.has_feature("web")
 	exit_button.pressed.connect(func(): exit_requested.emit())
+	AppTheme.apply_to(self)
 
 func open() -> void:
 	visible = true

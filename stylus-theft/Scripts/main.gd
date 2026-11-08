@@ -11,6 +11,8 @@ func _ready() -> void:
 	$CenterContainer/VBoxContainer/HBoxContainer/Gallery.pressed.connect(_on_gallery_pressed)
 	$CenterContainer/VBoxContainer/HBoxContainer/Exit.pressed.connect(_on_quit_pressed)
 	$CenterContainer/VBoxContainer/HBoxContainer/Exit. visible = not OS.has_feature("web")
+	AppTheme.apply_to(self)
+	_sync_bg()
 	
 	
 func _on_size_change():
@@ -34,3 +36,6 @@ func _on_gallery_pressed():
 	
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+	
+func _sync_bg() -> void:
+	$background.color = AppTheme.colors.black

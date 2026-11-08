@@ -11,6 +11,9 @@ func _ready() -> void:
 	bar_height = tool_bar.size.y
 	tool_bar.brush_size_changed.connect(_on_brush_size_changed)
 	tool_bar.brush_color_changed.connect(_on_brush_color_changed)
+	AppTheme.apply_to(get_parent())
+	background.color = AppTheme.colors.black
+	brush_color = AppTheme.colors.pressed
 	
 	
 # Each stroke is an array of Vector2 points.
