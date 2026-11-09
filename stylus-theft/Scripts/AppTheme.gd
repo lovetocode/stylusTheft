@@ -115,4 +115,8 @@ func make_theme(t: Dictionary) -> Theme:
 
 	th.set_stylebox("panel", "PanelContainer", make_box(t.black, t.border))
 	th.set_color("font_color", "Label", on_black)
+		# Bigger text for the theme dropdown and its popup list
+	th.set_font_size("font_size", "OptionButton", 32)
+	th.set_font_size("font_size", "PopupMenu", 32)
+	th.set_constant("v_separation", "PopupMenu", 16)  # roomier rows for touch
 	return th

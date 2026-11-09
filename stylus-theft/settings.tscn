@@ -45,15 +45,19 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 70
 text = "Save"
 
-[node name="BACK" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=1479925951]
-custom_minimum_size = Vector2(200, 80)
-layout_mode = 2
-theme_override_font_sizes/font_size = 70
-text = "Back
-"
-
 [node name="Paste" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=698786998]
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
 text = "Paste"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=1554840001]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="BACK" type="Button" parent="VBoxContainer/HBoxContainer3" unique_id=1479925951]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Back
+"

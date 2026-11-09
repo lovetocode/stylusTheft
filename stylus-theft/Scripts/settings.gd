@@ -7,7 +7,7 @@ extends Node2D
 
 func _ready() -> void:
 	pixabay_key_field.text = SessionConfig.pixabay_api_key
-	$VBoxContainer/HBoxContainer2/BACK.pressed.connect(_on_back_pressed)
+	$VBoxContainer/HBoxContainer3/BACK.pressed.connect(_on_back_pressed)
 	$VBoxContainer/HBoxContainer2/SAVE.pressed.connect(_on_save_pressed)
 	$VBoxContainer/HBoxContainer2/Paste.pressed.connect(_on_paste_pressed)
 	var picker := OptionButton.new()
@@ -19,7 +19,7 @@ func _ready() -> void:
 		AppTheme.set_index(i)
 		AppTheme.apply_to(self)
 		_sync_bg())
-	$VBoxContainer/HBoxContainer2.add_child(picker)
+	$VBoxContainer/HBoxContainer3.add_child(picker)
 	AppTheme.apply_to(self)
 	_sync_bg()
 	
