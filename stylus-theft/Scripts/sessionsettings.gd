@@ -12,7 +12,6 @@ func _ready() -> void:
 	if OS.has_feature("web"):
 		use_gallery_checkbox.hide()
 		SessionConfig.use_gallery = false
-		SessionConfig.use_pixabay = true
 	get_viewport().size_changed.connect(_on_size_changed)
 	_on_size_changed()
 	$VBoxContainer/HBoxContainer5/Back.pressed.connect(_on_back_pressed)
