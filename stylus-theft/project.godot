@@ -14,7 +14,7 @@ config/name="stylusTheft"
 run/main_scene="uid://j1c5fqrnfofd"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.7", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://c13sb752siqo1"
 
 [autoload]
 
