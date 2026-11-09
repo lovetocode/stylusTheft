@@ -9,6 +9,10 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if OS.has_feature("web"):
+		use_gallery_checkbox.hide()
+		SessionConfig.use_gallery = false
+		SessionConfig.use_pixabay = true
 	get_viewport().size_changed.connect(_on_size_changed)
 	_on_size_changed()
 	$VBoxContainer/HBoxContainer5/Back.pressed.connect(_on_back_pressed)
@@ -33,6 +37,7 @@ func _on_back_pressed() -> void:
 	get_tree().change_scene_to_file("res://main.tscn")
 	
 func _on_save_pressed() -> void:
+	SessionConfig.use_gallery = false if OS.has_feature("web") else use_gallery_checkbox.button_pressed
 	if pixabay_search_field.text.strip_edges() != "" :
 		SessionConfig.pixabay_query = pixabay_search_field.text
 		
