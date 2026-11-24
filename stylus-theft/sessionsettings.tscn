@@ -99,6 +99,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 70
 text = "Pixabay"
 
+[node name="BlankCanvas" type="CheckBox" parent="VBoxContainer/HBoxContainer4" unique_id=304228827]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Blank"
+
 [node name="AutoSaveCheckbox" type="CheckBox" parent="VBoxContainer/HBoxContainer4" unique_id=333206693]
 layout_mode = 2
 theme_override_font_sizes/font_size = 70

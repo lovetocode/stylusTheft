@@ -6,6 +6,8 @@ extends Node2D
 @onready var use_gallery_checkbox: CheckBox = $VBoxContainer/HBoxContainer4/UseGalleryCheckbox
 @onready var use_pixabay_checkbox: CheckBox = $VBoxContainer/HBoxContainer4/UsePixabayCheckbox
 @onready var auto_save_checkbox: CheckBox = $VBoxContainer/HBoxContainer4/AutoSaveCheckbox
+@onready var blank_canvas_check: CheckBox = $VBoxContainer/HBoxContainer4/BlankCanvas
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,6 +24,8 @@ func _ready() -> void:
 	use_gallery_checkbox.button_pressed = SessionConfig.use_gallery
 	use_pixabay_checkbox.button_pressed = SessionConfig.use_pixabay
 	auto_save_checkbox.button_pressed = SessionConfig.auto_save
+	blank_canvas_check.button_pressed = SessionConfig.blank_canvas
+	blank_canvas_check.toggled.connect(func(on: bool): SessionConfig.blank_canvas = on)
 	AppTheme.apply_to(self)
 	_sync_bg()
 	
@@ -49,3 +53,6 @@ func _on_save_pressed() -> void:
 	
 func _sync_bg() -> void:
 	$background.color = AppTheme.colors.black
+	
+func _on_blank_canvas_check_toggled(toggled_on: bool) -> void:
+	SessionConfig.blank_canvas = toggled_on

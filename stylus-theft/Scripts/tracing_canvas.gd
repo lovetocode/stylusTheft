@@ -113,8 +113,15 @@ func _on_exit_requested() -> void:
 	pause_menu.close()
 	await draw_layer.autosave_if_needed()
 	get_tree().quit()
-	
+
 func image_source_choice():
+	if SessionConfig.blank_canvas:
+		reference.texture = null
+		reference.visible = false
+		return
+	
+	reference.visible = true
+	
 	if OS.has_feature("web"):
 		res_loader.load_random_image()
 		return
@@ -128,7 +135,6 @@ func image_source_choice():
 	elif SessionConfig.use_gallery:
 		gallery_loader.load_next_gallery_image()
 	else:
-		#OS.alert("Hit res_loader branch")
 		res_loader.load_random_image()
 	
 		

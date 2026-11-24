@@ -7,6 +7,7 @@ var use_gallery: bool = true
 var use_pixabay: bool = false
 var pixabay_api_key: String
 var auto_save: bool = true
+var blank_canvas: bool = false
 
 const SAVE_PATH = "user://session_config.json"
 
@@ -44,3 +45,4 @@ func load_config():
 		pixabay_query = data.get("pixabay_query", pixabay_query)
 		pixabay_api_key = data.get("pixabay_api_key", pixabay_api_key)
 		auto_save = data.get("auto_save", auto_save)
+	
