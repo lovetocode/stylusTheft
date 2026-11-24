@@ -115,27 +115,36 @@ func _on_exit_requested() -> void:
 	get_tree().quit()
 
 func image_source_choice():
-	if SessionConfig.blank_canvas:
-		reference.texture = null
-		reference.visible = false
-		return
-	
-	reference.visible = true
-	
 	if OS.has_feature("web"):
 		res_loader.load_random_image()
 		return
-	if SessionConfig.use_gallery and SessionConfig.use_pixabay:
-		if randi() % 2 == 0:
-			gallery_loader.load_next_gallery_image()
-		else:
-			pixabay_loader.search_and_load(SessionConfig.pixabay_query)
-	elif SessionConfig.use_pixabay:
-		pixabay_loader.search_and_load(SessionConfig.pixabay_query)
-	elif SessionConfig.use_gallery:
-		gallery_loader.load_next_gallery_image()
-	else:
+	
+	var sources: Array[String] = []
+	if SessionConfig.use_gallery:
+		sources.append("gallery")
+	if SessionConfig.use_pixabay:
+		sources.append("pixabay")
+	if SessionConfig.blank_canvas:
+		sources.append("blank")
+	
+	if sources.is_empty():
+		_show_reference()
 		res_loader.load_random_image()
+		return
+	
+	match sources.pick_random():
+		"gallery":
+			_show_reference()
+			gallery_loader.load_next_gallery_image()
+		"pixabay":
+			_show_reference()
+			pixabay_loader.search_and_load(SessionConfig.pixabay_query)
+		"blank":
+			reference.texture = null
+			reference.visible = false
+
+func _show_reference() -> void:
+	reference.visible = true
 	
 		
 		
